@@ -1,0 +1,57 @@
+{
+  "name": "micropython-raspberry-pi-pico-w",
+  "version": "1.0.0",
+  "author": "ArthurZheng",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openblock-plugin/microPythonRaspberryPiPicoW.git"
+  },
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "dev": "npx openblock-registry-cli dev",
+    "build": "npx openblock-registry-cli build",
+    "build:obfuscate": "npx openblock-registry-cli build --obfuscate",
+    "publish": "npx openblock-registry-cli publish",
+    "publish:dry": "npx openblock-registry-cli publish --dry-run",
+    "validate": "npx openblock-registry-cli validate",
+    "i18n:update": "npx openblock-registry-cli i18n update",
+    "lint": "eslint . --ext .js --fix"
+  },
+  "openblock": {
+    "name": "Raspberry Pi Pico W",
+    "deviceId": "microPythonRaspberryPiPicoW",
+    "manufactor": "raspberrypi",
+    "learnMore": "https://www.raspberrypi.com/products/raspberry-pi-pico/",
+    "type": "microPython",
+    "iconURL": "./assets/microPythonRaspberryPiPicoW.png",
+    "description": {
+      "formatMessage": {
+        "id": "microPythonRaspberryPiPicoW.description",
+        "default": "A wireless variant of the Raspberry Pi Pico with onboard Wi-Fi and Bluetooth."
+      }
+    },
+    "bluetoothRequired": false,
+    "serialportRequired": true,
+    "defaultBaudRate": "115200",
+    "internetConnectionRequired": false,
+    "launchPeripheralConnectionFlow": true,
+    "useAutoScan": false,
+    "connectionIconURL": "./assets/microPythonRaspberryPiPicoW-illustration.svg",
+    "connectionSmallIconURL": "./assets/microPythonRaspberryPiPicoW-small.svg",
+    "main": "./src/microPythonRaspberryPiPicoW.js",
+    "generator": "./src/generator.js",
+    "translations": "./src/translations.js",
+    "programMode": ["upload"],
+    "tags": ["microPython"],
+    "helpLink": "https://wiki.openblock.cc/general-hardware-guidelines/boards/raspberry-pi-pico-w",
+    "libraries": "./libraries"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.3.0",
+    "eslint-config-scratch": "^5.0.0",
+    "husky": "^9.0.0"
+  }
+}
