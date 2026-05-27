@@ -1,4 +1,4 @@
-const { formatMessage, ArgumentType, BlockType, ProgramModeType, CommonPeripheral } = window.Scratch;
+const {formatMessage, ArgumentType, BlockType, ProgramModeType, CommonPeripheral} = window.Scratch;
 
 const PNPID_LIST = [
     // Micropython Raspberry Pi Pico
@@ -15,15 +15,39 @@ const SERIAL_CONFIG = {
 
 const DIVECE_OPT = {
     type: 'microPython',
-    chip: 'raspberryPiPico',
-    firmware: 'microPython-standard-raspberryPiPicoW.uf2'
+    fqbn: 'rp2040:rp2040'
 };
 
 const Pins = {
-    GP0: '0', GP1: '1', GP2: '2', GP3: '3', GP4: '4', GP5: '5', GP6: '6', GP7: '7',
-    GP8: '8', GP9: '9', GP10: '10', GP11: '11', GP12: '12', GP13: '13', GP14: '14',
-    GP15: '15', GP16: '16', GP17: '17', GP18: '18', GP19: '19', GP20: '20', GP21: '21',
-    GP22: '22', GP23: '23', GP24: '24', GP25: '25', GP26: '26', GP27: '27', GP28: '28'
+    GP0: '0',
+    GP1: '1',
+    GP2: '2',
+    GP3: '3',
+    GP4: '4',
+    GP5: '5',
+    GP6: '6',
+    GP7: '7',
+    GP8: '8',
+    GP9: '9',
+    GP10: '10',
+    GP11: '11',
+    GP12: '12',
+    GP13: '13',
+    GP14: '14',
+    GP15: '15',
+    GP16: '16',
+    GP17: '17',
+    GP18: '18',
+    GP19: '19',
+    GP20: '20',
+    GP21: '21',
+    GP22: '22',
+    GP23: '23',
+    GP24: '24',
+    GP25: '25',
+    GP26: '26',
+    GP27: '27',
+    GP28: '28'
 };
 
 const Level = {
@@ -77,33 +101,114 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
 
     get PINS_MENU () {
         return [
-            { text: 'GP0', value: Pins.GP0 },
-            { text: 'GP1', value: Pins.GP1 },
-            { text: 'GP2', value: Pins.GP2 },
-            { text: 'GP3', value: Pins.GP3 },
-            { text: 'GP4', value: Pins.GP4 },
-            { text: 'GP5', value: Pins.GP5 },
-            { text: 'GP6', value: Pins.GP6 },
-            { text: 'GP7', value: Pins.GP7 },
-            { text: 'GP8', value: Pins.GP8 },
-            { text: 'GP9', value: Pins.GP9 },
-            { text: 'GP10', value: Pins.GP10 },
-            { text: 'GP11', value: Pins.GP11 },
-            { text: 'GP12', value: Pins.GP12 },
-            { text: 'GP13', value: Pins.GP13 },
-            { text: 'GP14', value: Pins.GP14 },
-            { text: 'GP15', value: Pins.GP15 },
-            { text: 'GP16', value: Pins.GP16 },
-            { text: 'GP17', value: Pins.GP17 },
-            { text: 'GP18', value: Pins.GP18 },
-            { text: 'GP19', value: Pins.GP19 },
-            { text: 'GP20', value: Pins.GP20 },
-            { text: 'GP21', value: Pins.GP21 },
-            { text: 'GP22', value: Pins.GP22 },
-            { text: 'LED', value: Pins.GP25 },
-            { text: 'GP26', value: Pins.GP26 },
-            { text: 'GP27', value: Pins.GP27 },
-            { text: 'GP28', value: Pins.GP28 }
+            {
+                text: 'GP0',
+                value: Pins.GP0
+            },
+            {
+                text: 'GP1',
+                value: Pins.GP1
+            },
+            {
+                text: 'GP2',
+                value: Pins.GP2
+            },
+            {
+                text: 'GP3',
+                value: Pins.GP3
+            },
+            {
+                text: 'GP4',
+                value: Pins.GP4
+            },
+            {
+                text: 'GP5',
+                value: Pins.GP5
+            },
+            {
+                text: 'GP6',
+                value: Pins.GP6
+            },
+            {
+                text: 'GP7',
+                value: Pins.GP7
+            },
+            {
+                text: 'GP8',
+                value: Pins.GP8
+            },
+            {
+                text: 'GP9',
+                value: Pins.GP9
+            },
+            {
+                text: 'GP10',
+                value: Pins.GP10
+            },
+            {
+                text: 'GP11',
+                value: Pins.GP11
+            },
+            {
+                text: 'GP12',
+                value: Pins.GP12
+            },
+            {
+                text: 'GP13',
+                value: Pins.GP13
+            },
+            {
+                text: 'GP14',
+                value: Pins.GP14
+            },
+            {
+                text: 'GP15',
+                value: Pins.GP15
+            },
+            {
+                text: 'GP16',
+                value: Pins.GP16
+            },
+            {
+                text: 'GP17',
+                value: Pins.GP17
+            },
+            {
+                text: 'GP18',
+                value: Pins.GP18
+            },
+            {
+                text: 'GP19',
+                value: Pins.GP19
+            },
+            {
+                text: 'GP20',
+                value: Pins.GP20
+            },
+            {
+                text: 'GP21',
+                value: Pins.GP21
+            },
+            {
+                text: 'GP22',
+                value: Pins.GP22
+            },
+            {
+                text: 'LED',
+                value: Pins.GP25
+            },
+            {
+                text: 'GP26',
+                value: Pins.GP26
+            },
+            {
+                text: 'GP27',
+                value: Pins.GP27
+            },
+            {
+                text: 'GP28',
+                value: Pins.GP28
+            }
         ];
     }
 
@@ -113,21 +218,51 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
 
     get UART_TX_PIN () {
         return [
-            { text: 'GP0 (UART0)', value: Pins.GP0 },
-            { text: 'GP12 (UART0)', value: Pins.GP12 },
-            { text: 'GP16 (UART0)', value: Pins.GP16 },
-            { text: 'GP4 (UART1)', value: Pins.GP4 },
-            { text: 'GP8 (UART1)', value: Pins.GP8 }
+            {
+                text: 'GP0 (UART0)',
+                value: Pins.GP0
+            },
+            {
+                text: 'GP12 (UART0)',
+                value: Pins.GP12
+            },
+            {
+                text: 'GP16 (UART0)',
+                value: Pins.GP16
+            },
+            {
+                text: 'GP4 (UART1)',
+                value: Pins.GP4
+            },
+            {
+                text: 'GP8 (UART1)',
+                value: Pins.GP8
+            }
         ];
     }
 
     get UART_RX_PIN () {
         return [
-            { text: 'GP1 (UART0)', value: Pins.GP1 },
-            { text: 'GP13 (UART0)', value: Pins.GP13 },
-            { text: 'GP17 (UART0)', value: Pins.GP17 },
-            { text: 'GP5 (UART1)', value: Pins.GP5 },
-            { text: 'GP9 (UART1)', value: Pins.GP9 }
+            {
+                text: 'GP1 (UART0)',
+                value: Pins.GP1
+            },
+            {
+                text: 'GP13 (UART0)',
+                value: Pins.GP13
+            },
+            {
+                text: 'GP17 (UART0)',
+                value: Pins.GP17
+            },
+            {
+                text: 'GP5 (UART1)',
+                value: Pins.GP5
+            },
+            {
+                text: 'GP9 (UART1)',
+                value: Pins.GP9
+            }
         ];
     }
 
@@ -191,9 +326,18 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
 
     get ANALOG_PINS_MENU () {
         return [
-            { text: 'GP26', value: Pins.GP26 },
-            { text: 'GP27', value: Pins.GP27 },
-            { text: 'GP28', value: Pins.GP28 }
+            {
+                text: 'GP26',
+                value: Pins.GP26
+            },
+            {
+                text: 'GP27',
+                value: Pins.GP27
+            },
+            {
+                text: 'GP28',
+                value: Pins.GP28
+            }
         ];
     }
 
@@ -228,8 +372,14 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
 
     get SERIAL_NO_MENU () {
         return [
-            { text: '0', value: SerialNo.Serial0 },
-            { text: '1', value: SerialNo.Serial1 }
+            {
+                text: '0',
+                value: SerialNo.Serial0
+            },
+            {
+                text: '1',
+                value: SerialNo.Serial1
+            }
         ];
     }
 
@@ -243,13 +393,34 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
 
     get BAUDTATE_MENU () {
         return [
-            { text: '4800', value: Buadrate.B4800 },
-            { text: '9600', value: Buadrate.B9600 },
-            { text: '19200', value: Buadrate.B19200 },
-            { text: '38400', value: Buadrate.B38400 },
-            { text: '57600', value: Buadrate.B57600 },
-            { text: '76800', value: Buadrate.B76800 },
-            { text: '115200', value: Buadrate.B115200 }
+            {
+                text: '4800',
+                value: Buadrate.B4800
+            },
+            {
+                text: '9600',
+                value: Buadrate.B9600
+            },
+            {
+                text: '19200',
+                value: Buadrate.B19200
+            },
+            {
+                text: '38400',
+                value: Buadrate.B38400
+            },
+            {
+                text: '57600',
+                value: Buadrate.B57600
+            },
+            {
+                text: '76800',
+                value: Buadrate.B76800
+            },
+            {
+                text: '115200',
+                value: Buadrate.B115200
+            }
         ];
     }
 
@@ -302,8 +473,16 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'pins', defaultValue: this.DEFAULT_PIN },
-                            MODE: { type: ArgumentType.STRING, menu: 'mode', defaultValue: Mode.Input }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'pins',
+                                defaultValue: this.DEFAULT_PIN
+                            },
+                            MODE: {
+                                type: ArgumentType.STRING,
+                                menu: 'mode',
+                                defaultValue: Mode.Input
+                            }
                         }
                     },
                     {
@@ -315,21 +494,36 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'pins', defaultValue: this.DEFAULT_PIN },
-                            LEVEL: { type: ArgumentType.STRING, menu: 'level', defaultValue: Level.High }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'pins',
+                                defaultValue: this.DEFAULT_PIN
+                            },
+                            LEVEL: {
+                                type: ArgumentType.STRING,
+                                menu: 'level',
+                                defaultValue: Level.High
+                            }
                         }
                     },
                     {
-                        opcode: 'setPwmOutputU16',
+                        opcode: 'setPwmOutput',
                         text: formatMessage({
-                            id: 'microPythonRaspberryPiPicoW.pins.setPwmOutputU16',
+                            id: 'microPythonRaspberryPiPicoW.pins.setPwmOutput',
                             default: 'set pwm pin [PIN] out [OUT]',
                             description: 'microPythonRaspberryPiPico set pwm pin out'
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'pins', defaultValue: this.DEFAULT_PIN },
-                            OUT: { type: ArgumentType.UINT16_NUMBER, defaultValue: '65535' }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'pins',
+                                defaultValue: this.DEFAULT_PIN
+                            },
+                            OUT: {
+                                type: ArgumentType.UINT16_NUMBER,
+                                defaultValue: '65535'
+                            }
                         }
                     },
                     '---',
@@ -342,7 +536,11 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.BOOLEAN,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'pins', defaultValue: this.DEFAULT_PIN }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'pins',
+                                defaultValue: this.DEFAULT_PIN
+                            }
                         }
                     },
                     {
@@ -354,21 +552,32 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.REPORTER,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'analogPins', defaultValue: Pins.GP26 }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'analogPins',
+                                defaultValue: Pins.GP26
+                            }
                         }
                     },
                     '---',
                     {
-                        opcode: 'setServoOutputU16',
+                        opcode: 'setServoOutput',
                         text: formatMessage({
-                            id: 'microPythonRaspberryPiPicoW.pins.setServoOutputU16',
+                            id: 'microPythonRaspberryPiPicoW.pins.setServoOutput',
                             default: 'set servo pin [PIN] out [OUT]',
                             description: 'microPythonRaspberryPiPico set servo pin out'
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'pins', defaultValue: this.DEFAULT_PIN },
-                            OUT: { type: ArgumentType.HALF_ANGLE, defaultValue: '90' }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'pins',
+                                defaultValue: this.DEFAULT_PIN
+                            },
+                            OUT: {
+                                type: ArgumentType.HALF_ANGLE,
+                                defaultValue: '90'
+                            }
                         }
                     },
                     '---',
@@ -381,18 +590,37 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.CONDITIONAL,
                         arguments: {
-                            PIN: { type: ArgumentType.STRING, menu: 'pins', defaultValue: this.DEFAULT_PIN },
-                            MODE: { type: ArgumentType.STRING, menu: 'interruptMode', defaultValue: InterrupMode.Rising }
+                            PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'pins',
+                                defaultValue: this.DEFAULT_PIN
+                            },
+                            MODE: {
+                                type: ArgumentType.STRING,
+                                menu: 'interruptMode',
+                                defaultValue: InterrupMode.Rising
+                            }
                         },
                         programMode: [ProgramModeType.UPLOAD]
                     }
                 ],
                 menus: {
-                    pins: { items: this.PINS_MENU },
-                    mode: { items: this.MODE_MENU },
-                    analogPins: { items: this.ANALOG_PINS_MENU },
-                    level: { acceptReporters: true, items: this.LEVEL_MENU },
-                    interruptMode: { items: this.INTERRUP_MODE_MENU }
+                    pins: {
+                        items: this.PINS_MENU
+                    },
+                    mode: {
+                        items: this.MODE_MENU
+                    },
+                    analogPins: {
+                        items: this.ANALOG_PINS_MENU
+                    },
+                    level: {
+                        acceptReporters: true,
+                        items: this.LEVEL_MENU
+                    },
+                    interruptMode: {
+                        items: this.INTERRUP_MODE_MENU
+                    }
                 }
             },
             {
@@ -408,18 +636,32 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
 
                 blocks: [
                     {
-                        opcode: 'raspberryPiPicoWSerialBegin',
+                        opcode: 'serialBegin',
                         text: formatMessage({
-                            id: 'microPythonRaspberryPiPicoW.serial.raspberryPiPicoSerialBegin',
+                            id: 'microPythonRaspberryPiPicoW.serial.serialBegin',
                             default: 'serial [NO] begin baudrate [BAUD] pin RX [RX_PIN] TX [TX_PIN]',
                             description: 'microPythonRaspberryPiPico multi serial begin'
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            NO: { type: ArgumentType.NUMBER, menu: 'serialNo', defaultValue: SerialNo.Serial0 },
-                            BAUD: { type: ArgumentType.STRING, menu: 'baudrate', defaultValue: Buadrate.B115200 },
-                            RX_PIN: { type: ArgumentType.STRING, menu: 'uartRXPins' },
-                            TX_PIN: { type: ArgumentType.STRING, menu: 'uartTXPins' }
+                            NO: {
+                                type: ArgumentType.NUMBER,
+                                menu: 'serialNo',
+                                defaultValue: SerialNo.Serial0
+                            },
+                            BAUD: {
+                                type: ArgumentType.STRING,
+                                menu: 'baudrate',
+                                defaultValue: Buadrate.B115200
+                            },
+                            RX_PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'uartRXPins'
+                            },
+                            TX_PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'uartTXPins'
+                            }
                         },
                         programMode: [ProgramModeType.UPLOAD]
                     },
@@ -432,9 +674,20 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            NO: { type: ArgumentType.NUMBER, menu: 'serialNo', defaultValue: SerialNo.Serial0 },
-                            VALUE: { type: ArgumentType.STRING, defaultValue: 'Hello OpenBlock' },
-                            EOL: { type: ArgumentType.STRING, menu: 'eol', defaultValue: Eol.Warp }
+                            NO: {
+                                type: ArgumentType.NUMBER,
+                                menu: 'serialNo',
+                                defaultValue: SerialNo.Serial0
+                            },
+                            VALUE: {
+                                type: ArgumentType.STRING,
+                                defaultValue: 'Hello OpenBlock'
+                            },
+                            EOL: {
+                                type: ArgumentType.STRING,
+                                menu: 'eol',
+                                defaultValue: Eol.Warp
+                            }
                         },
                         programMode: [ProgramModeType.UPLOAD]
                     },
@@ -446,18 +699,65 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                             description: 'MicroPython RaspberryPiPico multi serial read a line'
                         }),
                         arguments: {
-                            NO: { type: ArgumentType.NUMBER, menu: 'serialNo', defaultValue: SerialNo.Serial0 }
+                            NO: {
+                                type: ArgumentType.NUMBER,
+                                menu: 'serialNo',
+                                defaultValue: SerialNo.Serial0
+                            }
                         },
                         blockType: BlockType.REPORTER,
                         programMode: [ProgramModeType.UPLOAD]
+                    },
+                    // Legacy aliases, kept for backward compatibility.
+                    {
+                        opcode: 'raspberryPiPicoWSerialBegin',
+                        text: formatMessage({
+                            id: 'microPythonRaspberryPiPicoW.serial.serialBegin',
+                            default: 'serial [NO] begin baudrate [BAUD] pin RX [RX_PIN] TX [TX_PIN]',
+                            description: 'microPythonRaspberryPiPico multi serial begin'
+                        }),
+                        blockType: BlockType.COMMAND,
+                        arguments: {
+                            NO: {
+                                type: ArgumentType.NUMBER,
+                                menu: 'serialNo',
+                                defaultValue: SerialNo.Serial0
+                            },
+                            BAUD: {
+                                type: ArgumentType.STRING,
+                                menu: 'baudrate',
+                                defaultValue: Buadrate.B115200
+                            },
+                            RX_PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'uartRXPins'
+                            },
+                            TX_PIN: {
+                                type: ArgumentType.STRING,
+                                menu: 'uartTXPins'
+                            }
+                        },
+                        programMode: [ProgramModeType.UPLOAD],
+                        hideFromPalette: true,
+                        func: 'serialBegin'
                     }
                 ],
                 menus: {
-                    baudrate: { items: this.BAUDTATE_MENU },
-                    serialNo: { items: this.SERIAL_NO_MENU },
-                    uartTXPins: { items: this.UART_TX_PIN },
-                    uartRXPins: { items: this.UART_RX_PIN },
-                    eol: { items: this.EOL_MENU }
+                    baudrate: {
+                        items: this.BAUDTATE_MENU
+                    },
+                    serialNo: {
+                        items: this.SERIAL_NO_MENU
+                    },
+                    uartTXPins: {
+                        items: this.UART_TX_PIN
+                    },
+                    uartRXPins: {
+                        items: this.UART_RX_PIN
+                    },
+                    eol: {
+                        items: this.EOL_MENU
+                    }
                 }
             },
             {
@@ -481,8 +781,15 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.COMMAND,
                         arguments: {
-                            TEXT: { type: ArgumentType.STRING, defaultValue: 'Hello OpenBlock' },
-                            EOL: { type: ArgumentType.STRING, menu: 'eol', defaultValue: Eol.Warp }
+                            TEXT: {
+                                type: ArgumentType.STRING,
+                                defaultValue: 'Hello OpenBlock'
+                            },
+                            EOL: {
+                                type: ArgumentType.STRING,
+                                menu: 'eol',
+                                defaultValue: Eol.Warp
+                            }
                         },
                         programMode: [ProgramModeType.UPLOAD]
                     },
@@ -495,13 +802,18 @@ class OpenBlockMicroPythonRaspberryPiPicoWDevice {
                         }),
                         blockType: BlockType.REPORTER,
                         arguments: {
-                            TEXT: { type: ArgumentType.STRING, defaultValue: 'Input a number:' }
+                            TEXT: {
+                                type: ArgumentType.STRING,
+                                defaultValue: 'Input a number:'
+                            }
                         },
                         programMode: [ProgramModeType.UPLOAD]
                     }
                 ],
                 menus: {
-                    eol: { items: this.EOL_MENU }
+                    eol: {
+                        items: this.EOL_MENU
+                    }
                 }
             }
         ];

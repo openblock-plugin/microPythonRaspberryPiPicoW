@@ -1,6 +1,6 @@
 {
   "name": "micropython-raspberry-pi-pico-w",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "ArthurZheng",
   "license": "MIT",
   "repository": {
@@ -22,6 +22,9 @@
   "openblock": {
     "name": "Raspberry Pi Pico W",
     "deviceId": "microPythonRaspberryPiPicoW",
+    "arch": [
+      "microPython-rp2040-w"
+    ],
     "manufactor": "raspberrypi",
     "learnMore": "https://www.raspberrypi.com/products/raspberry-pi-pico/",
     "type": "microPython",
@@ -43,10 +46,111 @@
     "main": "./src/microPythonRaspberryPiPicoW.js",
     "generator": "./src/generator.js",
     "translations": "./src/translations.js",
-    "programMode": ["upload"],
-    "tags": ["microPython"],
+    "programMode": [
+      "upload"
+    ],
+    "tags": [
+      "microPython"
+    ],
     "helpLink": "https://wiki.openblock.cc/general-hardware-guidelines/boards/raspberry-pi-pico-w",
-    "libraries": "./libraries"
+    "examples": [
+      {
+        "id": "blink",
+        "name": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.blink.name",
+            "default": "Blink"
+          }
+        },
+        "description": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.blink.description",
+            "default": "Make the on-board LED blink."
+          }
+        },
+        "file": "./examples/blink.ob"
+      },
+      {
+        "id": "button",
+        "name": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.button.name",
+            "default": "Button"
+          }
+        },
+        "description": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.button.description",
+            "default": "Light up the LED while a push button is pressed."
+          }
+        },
+        "file": "./examples/button.ob"
+      },
+      {
+        "id": "fade",
+        "name": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.fade.name",
+            "default": "Fade"
+          }
+        },
+        "description": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.fade.description",
+            "default": "Smoothly fade an LED in and out using PWM."
+          }
+        },
+        "file": "./examples/fade.ob"
+      },
+      {
+        "id": "knob",
+        "name": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.knob.name",
+            "default": "Knob"
+          }
+        },
+        "description": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.knob.description",
+            "default": "Control LED brightness with a potentiometer."
+          }
+        },
+        "file": "./examples/knob.ob"
+      },
+      {
+        "id": "servoSweep",
+        "name": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.servoSweep.name",
+            "default": "Servo Sweep"
+          }
+        },
+        "description": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.servoSweep.description",
+            "default": "Sweep a servo back and forth between 0 and 180 degrees."
+          }
+        },
+        "file": "./examples/servoSweep.ob"
+      },
+      {
+        "id": "consolePrint",
+        "name": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.consolePrint.name",
+            "default": "Console Print"
+          }
+        },
+        "description": {
+          "formatMessage": {
+            "id": "microPythonRaspberryPiPicoW.examples.consolePrint.description",
+            "default": "Print messages to the terminal."
+          }
+        },
+        "file": "./examples/consolePrint.ob"
+      }
+    ]
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
